@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns="http://www.knime.org/2008/09/XMLConfig" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.knime.org/2008/09/XMLConfig http://www.knime.org/XMLConfig_2008_09.xsd" key="settings.xml">
+    <entry key="node_file" type="xstring" value="settings.xml"/>
+    <config key="flow_stack"/>
+    <config key="internal_node_subsettings">
+        <entry key="memory_policy" type="xstring" value="CacheSmallInMemory"/>
+    </config>
+    <config key="model">
+        <entry key="sourceCode" type="xstring" value="# Copy input to output%%00010#output_table_1 = input_table_1.copy()%%00010%%00010%%00010import bs4%%00010import pandas as pd%%00010import requests%%00010%%00010%%00010def fetchUrl(url):%%00010%%00009'''%%00010%%00009功能%%65306访问 url 的网页%%65292获取网页内容并返回%%00010%%00009参数%%65306目标网页的 url%%00010%%00009返回%%65306目标网页的 html 内容%%00010%%00009'''%%00010%%00009%%00010%%00009headers = {%%00010%%00009%%00009'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',%%00010%%00009%%00009'user-agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',%%00010%%00009}%%00010%%00009%%00010%%00009r = requests.get(url,headers=headers)%%00010%%00009r.raise_for_status()%%00010%%00009r.encoding = r.apparent_encoding%%00010%%00009return r.text%%00010%%00010'''%%00010%%00009功能%%65306获取当天报纸的各版面的链接列表%%00010%%00009参数%%65306年%%65292月%%65292日%%00010%%00009'''  %%00010linkList = []%%00010for i in range(len(input_table_1)):%%00010%%00009year = str(input_table_1['Year'][i])%%00010%%00009month = input_table_1['Month (number)'][i]%%00010%%00009day = input_table_1['Day of month'][i]%%00010%%00010%%00009if month&lt;10 :%%00010%%00009%%00009month = '0'+str(month)%%00010%%00009else:%%00010%%00009%%00009month = str(month)%%00010%%00009if day&lt;10 :%%00010%%00009%%00009day = '0'+str(day)%%00010%%00009else:%%00010%%00009%%00009day = str(day)%%00010%%00009%%00010#%%00009print(day)%%00010#%%00009print(type(day))%%00010%%00009url = 'http://paper.people.com.cn/rmrb/html/' + year + '-' + month + '/' + day + '/nbs.D110000renmrb_01.htm'%%00010%%00009print(url)%%00010%%00009html = fetchUrl(url)%%00010%%00009bsobj = bs4.BeautifulSoup(html,'html.parser')%%00010%%00010%%00010%%00009pageList = bsobj.findAll(id=&quot;pageLink&quot;)%%00010%%00009%%00010%%00009%%00010%%00009for page in pageList:%%00010%%00009%%00009link = page.get('href')%%00010%%00009%%00009link = link[link.index('nbs'):]%%00010%%00009%%00009print(link)%%00010%%00009%%00009url = 'http://paper.people.com.cn/rmrb/html/'  + year + '-' + month + '/' + day + '/' + link%%00010%%00009%%00009linkList.append(url)%%00010%%00010print(linkList)%%00010items = pd.DataFrame(linkList,columns=['links'])%%00010output_table_1 = items"/>
+        <entry key="rowLimit" type="xint" value="1000"/>
+        <entry key="convertMissingToPython" type="xboolean" value="false"/>
+        <entry key="convertMissingFromPython" type="xboolean" value="false"/>
+        <entry key="sentinelOption" type="xstring" value="MIN_VAL"/>
+        <entry key="sentinelValue" type="xint" value="0"/>
+        <entry key="chunkSize" type="xint" value="500000"/>
+        <entry key="pythonVersionOption" type="xstring" value="python3"/>
+        <entry key="python2Command" type="xstring" value=""/>
+        <entry key="python3Command" type="xstring" value=""/>
+    </config>
+    <config key="nodeAnnotation">
+        <entry key="text" type="xstring" value="Get News Link"/>
+        <entry key="bgcolor" type="xint" value="16777215"/>
+        <entry key="x-coordinate" type="xint" value="574"/>
+        <entry key="y-coordinate" type="xint" value="459"/>
+        <entry key="width" type="xint" value="133"/>
+        <entry key="height" type="xint" value="18"/>
+        <entry key="alignment" type="xstring" value="CENTER"/>
+        <entry key="borderSize" type="xint" value="0"/>
+        <entry key="borderColor" type="xint" value="16777215"/>
+        <entry key="defFontSize" type="xint" value="9"/>
+        <entry key="annotation-version" type="xint" value="20151123"/>
+        <config key="styles"/>
+    </config>
+    <entry key="customDescription" type="xstring" isnull="true" value=""/>
+    <entry key="state" type="xstring" value="EXECUTED"/>
+    <entry key="factory" type="xstring" value="org.knime.python2.nodes.script2.Python2ScriptNodeFactory2"/>
+    <entry key="node-name" type="xstring" value="Python Script"/>
+    <entry key="node-bundle-name" type="xstring" value="KNIME Python nodes"/>
+    <entry key="node-bundle-symbolic-name" type="xstring" value="org.knime.python2.nodes"/>
+    <entry key="node-bundle-vendor" type="xstring" value="KNIME AG, Zurich, Switzerland"/>
+    <entry key="node-bundle-version" type="xstring" value="4.5.0.v202111232310"/>
+    <entry key="node-feature-name" type="xstring" value="KNIME Python Integration"/>
+    <entry key="node-feature-symbolic-name" type="xstring" value="org.knime.features.python2.feature.group"/>
+    <entry key="node-feature-vendor" type="xstring" value="KNIME AG, Zurich, Switzerland"/>
+    <entry key="node-feature-version" type="xstring" value="4.5.1.v202201171150"/>
+    <config key="factory_settings"/>
+    <config key="node_creation_config">
+        <config key="Input object (pickled)"/>
+        <config key="Input table">
+            <config key="port_0">
+                <entry key="object_class" type="xstring" value="org.knime.core.node.BufferedDataTable"/>
+            </config>
+        </config>
+        <config key="Output table">
+            <config key="port_0">
+                <entry key="object_class" type="xstring" value="org.knime.core.node.BufferedDataTable"/>
+            </config>
+        </config>
+        <config key="Output image"/>
+        <config key="Output object (pickled)"/>
+    </config>
+    <entry key="name" type="xstring" value="Python Script"/>
+    <entry key="hasContent" type="xboolean" value="true"/>
+    <entry key="isInactive" type="xboolean" value="false"/>
+    <config key="ports">
+        <config key="port_1">
+            <entry key="index" type="xint" value="1"/>
+            <entry key="port_spec_class" type="xstring" value="org.knime.core.data.DataTableSpec"/>
+            <entry key="port_object_class" type="xstring" value="org.knime.core.node.BufferedDataTable"/>
+            <entry key="port_object_summary" type="xstring" value="Rows: 172, Cols: 1"/>
+            <entry key="port_dir_location" type="xstring" value="port_1"/>
+        </config>
+    </config>
+    <config key="filestores">
+        <entry key="file_store_location" type="xstring" isnull="true" value=""/>
+        <entry key="file_store_id" type="xstring" value="ecdff459-df0c-4b06-aaac-d844f9cb57db"/>
+    </config>
+</config>

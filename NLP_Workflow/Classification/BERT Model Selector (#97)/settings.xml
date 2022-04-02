@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns="http://www.knime.org/2008/09/XMLConfig" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.knime.org/2008/09/XMLConfig http://www.knime.org/XMLConfig_2008_09.xsd" key="settings.xml">
+    <entry key="node_file" type="xstring" value="settings.xml"/>
+    <config key="flow_stack"/>
+    <config key="internal_node_subsettings">
+        <entry key="memory_policy" type="xstring" value="CacheSmallInMemory"/>
+    </config>
+    <config key="model">
+        <entry key="pythonCommand" type="xstring" value=""/>
+        <entry key="mode" type="xstring" value="TF_HUB"/>
+        <entry key="tfHubModel" type="xstring" value="bert_en_cased_L-24_H-1024_A-16"/>
+        <config key="huggingFaceModel_Internals">
+            <entry key="SettingsModelID" type="xstring" value="SMID_string"/>
+            <entry key="EnabledStatus" type="xboolean" value="true"/>
+        </config>
+        <entry key="huggingFaceModel" type="xstring" value=""/>
+        <config key="remoteUrl_Internals">
+            <entry key="SettingsModelID" type="xstring" value="SMID_string"/>
+            <entry key="EnabledStatus" type="xboolean" value="true"/>
+        </config>
+        <entry key="remoteUrl" type="xstring" value=""/>
+        <config key="localPath_Internals">
+            <entry key="SettingsModelID" type="xstring" value="SMID_string"/>
+            <entry key="EnabledStatus" type="xboolean" value="true"/>
+        </config>
+        <entry key="localPath" type="xstring" value=""/>
+        <config key="cacheDir_Internals">
+            <entry key="SettingsModelID" type="xstring" value="SMID_string"/>
+            <entry key="EnabledStatus" type="xboolean" value="true"/>
+        </config>
+        <entry key="cacheDir" type="xstring" value=""/>
+        <config key="advancedMode_Internals">
+            <entry key="SettingsModelID" type="xstring" value="SMID_boolean"/>
+            <entry key="EnabledStatus" type="xboolean" value="true"/>
+        </config>
+        <entry key="advancedMode" type="xboolean" value="false"/>
+    </config>
+    <entry key="customDescription" type="xstring" isnull="true" value=""/>
+    <entry key="state" type="xstring" value="CONFIGURED"/>
+    <entry key="factory" type="xstring" value="se.redfield.bert.nodes.selector.BertModelSelectorNodeFactory"/>
+    <entry key="node-name" type="xstring" value="BERT Model Selector"/>
+    <entry key="node-bundle-name" type="xstring" value="BERT extension for KNIME Workbench"/>
+    <entry key="node-bundle-symbolic-name" type="xstring" value="se.redfield.bert"/>
+    <entry key="node-bundle-vendor" type="xstring" value="Redfield AB"/>
+    <entry key="node-bundle-version" type="xstring" value="0.2.0.v202111180712"/>
+    <entry key="node-feature-name" type="xstring" value="Redfield BERT Nodes"/>
+    <entry key="node-feature-symbolic-name" type="xstring" value="se.redfield.bert.feature.feature.group"/>
+    <entry key="node-feature-vendor" type="xstring" value="Redfield AB"/>
+    <entry key="node-feature-version" type="xstring" value="0.2.0.v202111180712"/>
+    <config key="factory_settings"/>
+    <entry key="name" type="xstring" value="BERT Model Selector"/>
+    <entry key="hasContent" type="xboolean" value="false"/>
+    <entry key="isInactive" type="xboolean" value="false"/>
+    <config key="ports">
+        <config key="port_1">
+            <entry key="index" type="xint" value="1"/>
+            <entry key="port_dir_location" type="xstring" isnull="true" value=""/>
+        </config>
+    </config>
+    <config key="filestores">
+        <entry key="file_store_location" type="xstring" isnull="true" value=""/>
+        <entry key="file_store_id" type="xstring" isnull="true" value=""/>
+    </config>
+</config>

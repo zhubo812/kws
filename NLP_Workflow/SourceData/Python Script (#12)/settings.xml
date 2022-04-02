@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns="http://www.knime.org/2008/09/XMLConfig" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.knime.org/2008/09/XMLConfig http://www.knime.org/XMLConfig_2008_09.xsd" key="settings.xml">
+    <entry key="node_file" type="xstring" value="settings.xml"/>
+    <config key="flow_stack"/>
+    <config key="internal_node_subsettings">
+        <entry key="memory_policy" type="xstring" value="CacheSmallInMemory"/>
+    </config>
+    <config key="model">
+        <entry key="sourceCode" type="xstring" value="# Copy input to output%%00010output_table_1 = input_table_1.copy()%%00010paths= input_table_1['Path']%%00010%%00010%%00010def ASSParser(path , Type, Name, Number):%%00010%%00009paths = ['Better.Days.chs.ass'];%%00010%%00010%%00009for path in paths:%%00010%%00009%%00009file = open(path, 'r',encoding='utf-8')%%00010%%00009%%00009# for line in file.readlines():%%00010%%00009%%00009# %%00009print(line.strip())%%00010%%00009%%00009lines = file.readlines()%%00010%%00010%%00009%%00009# print(parts)%%00010%%00009%%00009for line in lines:%%00010%%00009%%00009%%00009if(len(line) == 0 or line.startswith(&quot;Dialogue:&quot;)==False):%%00010%%00009%%00009%%00009%%00009continue%%00010%%00009%%00009%%00009items=line.split(',')#分割字符串%%00010%%00009%%00009%%00009# print(len(items))%%00010%%00010%%00009%%00009%%00009startTime = items[1].strip()%%00010%%00009%%00009%%00009endTime = items[2].strip()%%00010%%00009%%00009%%00009text = items[9].strip().replace(&quot;{\\blur3}&quot;,&quot;&quot;)%%00010%%00010%%00009%%00009%%00009print(startTime)%%00010%%00009%%00009%%00009print(endTime)%%00010%%00009%%00009%%00009print(text)%%00010%%00009%%00009%%00009print()%%00010%%00010%%00009%%00009%%00009subtDic = {}%%00010%%00009%%00009%%00009subtDic['Type'] = 'Movie'%%00010%%00009%%00009%%00009subtDic['Name'] ='少年的你'##根据不同的字幕文件修改名称%%00010%%00009%%00009%%00009subtDic['Number'] = 1 ##根据不同的字幕文件修改序号%%00010%%00009%%00009%%00009subtDic['startTime'] = startTime%%00010%%00009%%00009%%00009subtDic['endTime'] = endTime%%00010%%00009%%00009%%00009subtDic['text'] = text%%00010%%00010def SRTParser(path , Type, Name, Number):%%00010%%00009typeList = []%%00010%%00009nameList = []%%00010%%00009startList =[]%%00010%%00009endList = []%%00010%%00009textList = []%%00010%%00010%%00009file = open(path, 'r',encoding='utf-8')%%00010%%00009# for line in file.readlines():%%00010%%00009# %%00009print(line.strip())%%00010%%00009content = file.read()%%00010%%00009parts = content.split('\n\n')%%00010%%00009%%00009# print(parts)%%00010%%00009for part in parts:%%00010%%00009%%00009if(len(part) == 0):%%00010%%00009%%00009%%00009continue%%00010%%00009%%00009items=part.split('\n')%%00010%%00009%%00009# print(len(items))%%00010%%00009%%00009timestr = items[1]%%00010%%00009%%00009timeArray = timestr.split('--&gt;')%%00010%%00009%%00009startTime = timeArray[0].strip()%%00010%%00009%%00009endTime = timeArray[1].strip()%%00010%%00009%%00009text = items[2]%%00010%%00010%%00009%%00009subtDic = {}%%00010%%00009%%00009subtDic['Type'] = 'Movie'%%00010%%00009%%00009subtDic['Name'] ='爱很美味'##根据不同的字幕文件修改名称%%00010%%00009%%00009subtDic['Number'] = 1 ##根据不同的字幕文件修改序号%%00010%%00009%%00009subtDic['startTime'] = startTime%%00010%%00009%%00009subtDic['endTime'] = endTime%%00010%%00009%%00009subtDic['text'] = text%%00010%%00010%%00010for path in paths:%%00010%%00009print(path)%%00010%%00010%%00009%%00009%%00009items.insert(loc=0,column='end', value=endlist)%%00010%%00009%%00009output_table_1 = items"/>
+        <entry key="rowLimit" type="xint" value="1000"/>
+        <entry key="convertMissingToPython" type="xboolean" value="false"/>
+        <entry key="convertMissingFromPython" type="xboolean" value="false"/>
+        <entry key="sentinelOption" type="xstring" value="MIN_VAL"/>
+        <entry key="sentinelValue" type="xint" value="0"/>
+        <entry key="chunkSize" type="xint" value="500000"/>
+        <entry key="pythonVersionOption" type="xstring" value="python3"/>
+        <entry key="python2Command" type="xstring" value=""/>
+        <entry key="python3Command" type="xstring" value=""/>
+    </config>
+    <config key="nodeAnnotation">
+        <entry key="text" type="xstring" value="subtitle_parser"/>
+        <entry key="bgcolor" type="xint" value="16777215"/>
+        <entry key="x-coordinate" type="xint" value="254"/>
+        <entry key="y-coordinate" type="xint" value="479"/>
+        <entry key="width" type="xint" value="133"/>
+        <entry key="height" type="xint" value="18"/>
+        <entry key="alignment" type="xstring" value="CENTER"/>
+        <entry key="borderSize" type="xint" value="0"/>
+        <entry key="borderColor" type="xint" value="16777215"/>
+        <entry key="defFontSize" type="xint" value="9"/>
+        <entry key="annotation-version" type="xint" value="20151123"/>
+        <config key="styles"/>
+    </config>
+    <entry key="customDescription" type="xstring" isnull="true" value=""/>
+    <entry key="state" type="xstring" value="CONFIGURED"/>
+    <entry key="factory" type="xstring" value="org.knime.python2.nodes.script2.Python2ScriptNodeFactory2"/>
+    <entry key="node-name" type="xstring" value="Python Script"/>
+    <entry key="node-bundle-name" type="xstring" value="KNIME Python nodes"/>
+    <entry key="node-bundle-symbolic-name" type="xstring" value="org.knime.python2.nodes"/>
+    <entry key="node-bundle-vendor" type="xstring" value="KNIME AG, Zurich, Switzerland"/>
+    <entry key="node-bundle-version" type="xstring" value="4.5.0.v202111232310"/>
+    <entry key="node-feature-name" type="xstring" value="KNIME Python Integration"/>
+    <entry key="node-feature-symbolic-name" type="xstring" value="org.knime.features.python2.feature.group"/>
+    <entry key="node-feature-vendor" type="xstring" value="KNIME AG, Zurich, Switzerland"/>
+    <entry key="node-feature-version" type="xstring" value="4.5.1.v202201171150"/>
+    <config key="factory_settings"/>
+    <config key="node_creation_config">
+        <config key="Input object (pickled)"/>
+        <config key="Input table">
+            <config key="port_0">
+                <entry key="object_class" type="xstring" value="org.knime.core.node.BufferedDataTable"/>
+            </config>
+        </config>
+        <config key="Output table">
+            <config key="port_0">
+                <entry key="object_class" type="xstring" value="org.knime.core.node.BufferedDataTable"/>
+            </config>
+        </config>
+        <config key="Output image"/>
+        <config key="Output object (pickled)"/>
+    </config>
+    <entry key="name" type="xstring" value="Python Script"/>
+    <entry key="hasContent" type="xboolean" value="false"/>
+    <entry key="isInactive" type="xboolean" value="false"/>
+    <config key="ports">
+        <config key="port_1">
+            <entry key="index" type="xint" value="1"/>
+            <entry key="port_dir_location" type="xstring" isnull="true" value=""/>
+        </config>
+    </config>
+    <config key="filestores">
+        <entry key="file_store_location" type="xstring" isnull="true" value=""/>
+        <entry key="file_store_id" type="xstring" isnull="true" value=""/>
+    </config>
+</config>
